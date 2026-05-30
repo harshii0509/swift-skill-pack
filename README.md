@@ -1,5 +1,7 @@
 # Swift Skill Pack
 
+[![skills.sh](https://skills.sh/b/harshii0509/swift-skill-pack)](https://skills.sh/harshii0509/swift-skill-pack)
+
 A reusable 4-skill suite for Swift, SwiftUI, and iOS work across prototyping, production architecture, and debugging.
 
 Use it with Codex, Claude, and similar coding agents when you want sharper routing and more grounded Swift guidance than a generic assistant usually gives you.
@@ -37,6 +39,8 @@ https://github.com/harshii0509/swift-skill-pack/tree/main/skills/swift-debug
 ```
 
 After install, restart Codex so the new skills are picked up.
+
+You can also browse this pack on [skills.sh](https://skills.sh/harshii0509/swift-skill-pack) once the repo has been indexed there.
 
 ## Install In Claude
 

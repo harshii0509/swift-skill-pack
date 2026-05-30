@@ -1,0 +1,34 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Router",
+      "description": "Start here when an agent needs to choose the right Swift lane before implementing anything.",
+      "skills": [
+        "swift"
+      ]
+    },
+    {
+      "title": "Prototype",
+      "description": "Interaction, motion, rendering, and Apple-native feel for SwiftUI experiments and UI studies.",
+      "skills": [
+        "swift-prototype"
+      ]
+    },
+    {
+      "title": "Patterns",
+      "description": "Production Swift architecture for sessions, navigation, bridges, and modularization decisions.",
+      "skills": [
+        "swift-patterns"
+      ]
+    },
+    {
+      "title": "Debug",
+      "description": "Root-cause debugging for SwiftUI, UIKit representables, concurrency, and performance regressions.",
+      "skills": [
+        "swift-debug"
+      ]
+    }
+  ]
+}
