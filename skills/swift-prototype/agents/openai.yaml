@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Prototype"
+  short_description: "Build high-feel SwiftUI interaction prototypes"
+  default_prompt: "Use $swift-prototype to shape this SwiftUI interaction prototype and keep the state model lean while the motion feels premium."

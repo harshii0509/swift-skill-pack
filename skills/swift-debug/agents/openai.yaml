@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Debug"
+  short_description: "Debug complex SwiftUI and iOS bugs"
+  default_prompt: "Use $swift-debug to diagnose this Swift or SwiftUI bug with a root-cause-first debugging pass."

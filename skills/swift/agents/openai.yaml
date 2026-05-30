@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Router"
+  short_description: "Route Swift tasks to the right skill lane"
+  default_prompt: "Use $swift to route this Swift or SwiftUI task to the right focused skill before giving implementation advice."

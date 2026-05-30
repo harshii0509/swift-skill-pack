@@ -1,0 +1,4 @@
+interface:
+  display_name: "Swift Patterns"
+  short_description: "Apply production Swift architecture patterns"
+  default_prompt: "Use $swift-patterns to recommend the cleanest production Swift architecture for this app, dependency, or navigation problem."

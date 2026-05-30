@@ -1,0 +1,262 @@
+version: 1
+harness_instruction: "Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff."
+
+cases:
+  - id: mixed_prototype_to_production
+    category: mixed
+    prompt: "I validated a one-file SwiftUI experiment with custom gestures. Help me split it into production-ready pieces without losing the feel."
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/prototype-structure.md"
+    must_mention:
+      - "preserve interaction semantics before refactoring"
+      - "keep local UI state local unless sharing is clearly needed"
+    must_avoid:
+      - "start with package modularization"
+      - "jump straight to sessions before protecting the interaction"
+    notes: "May borrow swift-patterns secondarily after the interaction boundary is preserved."
+
+  - id: mixed_swiftuix_bridge_decision
+    category: mixed
+    prompt: "We need search, blur, and paging in a mixed UIKit and SwiftUI app. Should we use SwiftUIX, custom representables, or native SwiftUI?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/swiftuix-patterns.md"
+      - "swift-patterns/references/uikit-swiftui-bridge.md"
+    must_mention:
+      - "native vs package vs custom boundary"
+      - "hide third-party UI dependencies behind a local adapter"
+    must_avoid:
+      - "treat it as a debug task"
+      - "force SwiftUIX without tradeoffs"
+    notes: "Bridge design choice, not a broken-behavior prompt."
+
+  - id: mixed_apple_native_before_productizing
+    category: mixed
+    prompt: "This SwiftUI prototype works, but it still feels generic. Help me make it feel Apple-native before we decide whether to productionize it."
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/apple-native-design.md"
+    must_mention:
+      - "hierarchy or materials"
+      - "native controls or navigation structure"
+    must_avoid:
+      - "lead with architecture extraction"
+      - "generic cross-platform design advice"
+    notes: "The immediate bottleneck is feel, not app structure."
+
+  - id: mixed_broken_screen_with_architecture_language
+    category: mixed
+    prompt: "Our MVVM SwiftUI screen stops refreshing until I navigate away and back. Do we need to redesign the architecture?"
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/swiftui-body-bugs.md"
+    must_mention:
+      - "instrument before refactoring"
+      - "stale state or identity/invalidation checks"
+    must_avoid:
+      - "start with architecture redesign"
+      - "route to swift-patterns first"
+    notes: "Ambiguous wording, but broken behavior takes precedence."
+
+  - id: prototype_drag_tilt_card
+    category: prototype
+    prompt: "Build a draggable glassy card that tilts with my finger and snaps back with a spring."
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/gesture-patterns.md"
+      - "swift-prototype/references/animation-craft.md"
+    must_mention:
+      - "minimal state model"
+      - "spring or velocity-aware release"
+    must_avoid:
+      - "session architecture"
+      - "modularization"
+    notes: "Pure interaction prompt."
+
+  - id: prototype_inferno_shader_decision
+    category: prototype
+    prompt: "I want a ripple + heat-distortion transition for a SwiftUI prototype. Should I use Inferno, native Shader, Canvas, or jump straight to custom Metal?"
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/inferno-patterns.md"
+      - "swift-prototype/references/custom-rendering.md"
+    must_mention:
+      - "native Shader vs Inferno tradeoff"
+      - "Canvas is not the default for distortion of existing content"
+    must_avoid:
+      - "default immediately to custom Metal"
+      - "force Inferno as mandatory"
+    notes: "Pinned regression case."
+
+  - id: prototype_apple_native_settings_review
+    category: prototype
+    prompt: "This SwiftUI settings and detail flow works, but it still feels generic. What would you change to make it feel at home on Apple platforms?"
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/apple-native-design.md"
+    must_mention:
+      - "hierarchy, list/form, or standard navigation"
+      - "restrained motion or system materials"
+    must_avoid:
+      - "generic web-style UI advice"
+      - "lead with packaging or DI"
+    notes: "Pinned regression case."
+
+  - id: prototype_canvas_flicker_effect
+    category: prototype
+    prompt: "I want a candle flame effect that flickers in place and reacts to drag."
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/custom-rendering.md"
+      - "swift-prototype/references/animation-craft.md"
+    must_mention:
+      - "TimelineView or Canvas"
+      - "clear boundary between gesture input and render loop"
+    must_avoid:
+      - "turn it into a package architecture problem"
+      - "jump to custom Metal without reason"
+    notes: "Continuous effect prompt."
+
+  - id: patterns_session_ownership
+    category: patterns
+    prompt: "Should selected conversation, auth, and profile each have their own session, or is that overkill?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/session-architecture.md"
+    must_mention:
+      - "long-lived shared state boundaries"
+      - "testability or protocol-based ownership"
+    must_avoid:
+      - "singletons"
+      - "debugging instrumentation"
+    notes: "Direct state-ownership question."
+
+  - id: patterns_multiplatform_food_truck
+    category: patterns
+    prompt: "We have one SwiftUI codebase that needs iPhone, iPad, Mac, widgets, and Live Activities. What structure keeps that maintainable?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/food-truck-patterns.md"
+    must_mention:
+      - "separate app surfaces or roots"
+      - "shared domain state with surface-specific entry points"
+    must_avoid:
+      - "one giant root view"
+      - "treat widgets and Live Activities as ordinary subviews"
+    notes: "Pinned regression case."
+
+  - id: patterns_swift_navigation_decision
+    category: patterns
+    prompt: "Our app now has tabs, drill-downs, sheets, and deep links. Should we keep plain NavigationStack or adopt Swift Navigation?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/swift-navigation-patterns.md"
+    must_mention:
+      - "deep-linkable or testable navigation state"
+      - "native SwiftUI is still fine when the flow is simple"
+    must_avoid:
+      - "always adopt swift-navigation"
+      - "route to debug"
+    notes: "Pinned regression case."
+
+  - id: patterns_swift_perception_compatibility
+    category: patterns
+    prompt: "We want Observation-style state APIs, but our minimum iOS target is older. Where does Swift Perception fit, and when should we stay with ObservableObject instead?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/swift-perception-patterns.md"
+      - "swift-patterns/references/session-architecture.md"
+    must_mention:
+      - "backport or migration bridge"
+      - "ObservableObject remains valid for stable legacy code"
+    must_avoid:
+      - "treat Swift Perception as mandatory"
+      - "ignore deployment-target tradeoffs"
+    notes: "Pinned regression case."
+
+  - id: patterns_modularization
+    category: patterns
+    prompt: "The app is growing and incremental builds are getting slow. How should I split it into packages?"
+    expected_primary_lane: "swift-patterns"
+    expected_first_references:
+      - "swift-patterns/references/spm-modularization.md"
+    must_mention:
+      - "feature or domain boundaries"
+      - "avoid premature package explosion"
+    must_avoid:
+      - "pure UI polish guidance"
+      - "debug instrumentation"
+    notes: "Direct modularization prompt."
+
+  - id: debug_stale_ui_refresh
+    category: debug
+    prompt: "My SwiftUI screen logs the new value, but the UI only refreshes after I navigate away and back. Help me debug the root cause."
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/swiftui-body-bugs.md"
+    must_mention:
+      - "instrumentation before redesign"
+      - "stale @State copy, identity, or off-main mutation checks"
+    must_avoid:
+      - "route to swift-patterns first"
+      - "default to architecture rewrite"
+    notes: "Pinned regression case."
+
+  - id: debug_bridge_lifecycle_reset
+    category: debug
+    prompt: "I wrapped a zoomable UIScrollView in UIViewRepresentable. It works on first render, then resets weirdly after SwiftUI state changes."
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/xcode-debug-tools.md"
+      - "swift-patterns/references/uikit-swiftui-bridge.md"
+    must_mention:
+      - "makeUIView vs updateUIView"
+      - "coordinator loop or transient UIKit-owned state"
+    must_avoid:
+      - "route to swift-patterns first"
+      - "start by replacing the bridge"
+    notes: "Pinned regression case."
+
+  - id: debug_async_duplicate_updates
+    category: debug
+    prompt: "I’m getting random duplicates when two tasks update the same list."
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/concurrency-pitfalls.md"
+    must_mention:
+      - "actor isolation or read-modify-write race"
+      - "smallest instrumentation or serialization step"
+    must_avoid:
+      - "package restructuring"
+      - "UI polish advice"
+    notes: "Concurrency bug prompt."
+
+  - id: debug_visual_polish_jank
+    category: debug
+    prompt: "Scrolling got janky after I added a lot of visual polish."
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/xcode-debug-tools.md"
+      - "swift-debug/references/swiftui-body-bugs.md"
+    must_mention:
+      - "expensive body work or blended layers"
+      - "profile before redesign"
+    must_avoid:
+      - "route to prototype"
+      - "lead with broad architecture changes"
+    notes: "Performance regression prompt."
+
+  - id: debug_delegate_state_handoff
+    category: debug
+    prompt: "ARKit callbacks are arriving, but my SwiftUI state only updates sometimes."
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/concurrency-pitfalls.md"
+    must_mention:
+      - "main-actor handoff"
+      - "lifetime or cancellation checks"
+    must_avoid:
+      - "route to patterns first"
+      - "generic sensor architecture advice without diagnosis"
+    notes: "Delegate-to-SwiftUI handoff bug."
