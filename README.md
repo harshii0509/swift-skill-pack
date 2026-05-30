@@ -26,6 +26,14 @@ The canonical installable source lives in [`skills/`](./skills).
 
 ## Quick Start
 
+Install the full pack with the `skills` CLI:
+
+```bash
+npx skills add harshii0509/swift-skill-pack
+```
+
+This is the fastest cross-agent install path and works with the broader `skills.sh` ecosystem.
+
 ## Install In Codex
 
 Use Codex's installer skill against the public GitHub tree URLs:
