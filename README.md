@@ -2,16 +2,27 @@
 
 A reusable 4-skill suite for Swift, SwiftUI, and iOS work across prototyping, production architecture, and debugging.
 
-Public repo: [harshii0509/swift-skill-pack](https://github.com/harshii0509/swift-skill-pack)
+Use it with Codex, Claude, and similar coding agents when you want sharper routing and more grounded Swift guidance than a generic assistant usually gives you.
 
 ## Included Skills
 
-- `swift`: router skill that picks the right lane
-- `swift-prototype`: interaction design, motion, rendering, Apple-native feel
-- `swift-patterns`: app structure, sessions, navigation, bridges, modularization
-- `swift-debug`: root-cause debugging for SwiftUI, UIKit bridges, concurrency, and performance
+| Skill | What it does |
+|---|---|
+| `swift` | Router skill that picks the right lane before implementation starts |
+| `swift-prototype` | SwiftUI interaction design, motion, rendering, and Apple-native feel |
+| `swift-patterns` | App structure, sessions, navigation, bridges, and modularization |
+| `swift-debug` | Root-cause debugging for SwiftUI, UIKit bridges, concurrency, and performance |
 
 The canonical installable source lives in [`skills/`](./skills).
+
+## Best For
+
+- SwiftUI interaction prototypes that need stronger feel and cleaner state models
+- Production Swift app structure decisions around sessions, navigation, bridges, and modularization
+- Difficult SwiftUI bugs involving stale state, `UIViewRepresentable`, concurrency, or rendering regressions
+- Agent workflows where routing to the right Swift sub-skill matters as much as the final code
+
+## Quick Start
 
 ## Install In Codex
 
