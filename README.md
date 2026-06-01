@@ -38,6 +38,30 @@ cp -R skills/swift-patterns ~/.claude/skills/
 cp -R skills/swift-debug ~/.claude/skills/
 ```
 
+## How To Update
+
+Updates are not automatic. Publishing a new version makes it available, but existing users still need to refresh their local copy.
+
+- If you installed with the `skills` CLI:
+
+```bash
+npx skills check
+npx skills update
+```
+
+Then restart your agent so it reloads the updated skill files.
+
+- If you installed by copying folders into Codex or Claude:
+  copy the updated `skills/swift*` folders over your existing local install again.
+
+- If you are developing from this repo locally:
+
+```bash
+./scripts/sync-local-installs.sh
+```
+
+That syncs the canonical source into your local Codex and Claude skill directories.
+
 ## Example Usage
 
 - `$swift Build a draggable card that tilts with my finger and springs back naturally.`
