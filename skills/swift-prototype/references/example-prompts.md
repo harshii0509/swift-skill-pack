@@ -53,6 +53,38 @@ Use these prompts as calibration examples for when `swift-prototype` should trig
 
 ---
 
+## Liquid Glass Adoption
+
+**Prompt**
+`We rebuilt on iOS 26 and our custom tab bars, chips, and toolbars now feel out of place. What should we replace, keep native, or restyle?`
+
+**Load first**
+- `liquid-glass.md`
+- `apple-native-design.md`
+
+**Optimize for**
+- letting standard bars adopt Liquid Glass automatically
+- removing custom chrome that fights system surfaces
+- using exact API terms for the new bar and safe-area tools
+
+---
+
+## Bottom Accessory / Bar Choice
+
+**Prompt**
+`I need a mini-player above the tab bar that can become inline when the bar collapses. Should this be tabViewBottomAccessory, safeAreaBar, or just an overlay?`
+
+**Load first**
+- `liquid-glass.md`
+- `../../swift/references/swiftui-vocabulary.md`
+
+**Optimize for**
+- choosing the system-owned tab accessory when the UI belongs to tab chrome
+- distinguishing `tabViewBottomAccessory` from `safeAreaBar`
+- avoiding overlay hacks as the default answer
+
+---
+
 ## Apple-Native Review
 
 **Prompt**

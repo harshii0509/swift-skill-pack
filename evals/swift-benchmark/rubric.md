@@ -4,7 +4,7 @@ Use this rubric for answer-only benchmark runs against the installed Swift skill
 
 Harness instruction:
 
-`Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff.`
+`Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff. Use exact SwiftUI API names when they matter.`
 
 ## Scoring Dimensions
 
@@ -45,6 +45,16 @@ Pass when:
 Fail when:
 - the answer mandates one approach where the skill guidance is conditional
 
+### Vocabulary
+
+Pass when:
+- the answer uses the current SwiftUI term when the distinction matters
+- the answer does not confuse `tab bar`, `bottomBar`, `safeAreaBar`, `safeAreaInset`, or Liquid Glass APIs
+
+Fail when:
+- the answer uses vague or incorrect terms in a way that would mislead implementation
+- the answer collapses distinct SwiftUI surfaces into one generic “bottom bar” or “safe space”
+
 ### Parity
 
 Pass when:
@@ -66,9 +76,10 @@ Soft gates:
 - focus pass rate >= 85%
 - source-grounding pass rate >= 85%
 - balance pass rate >= 85%
+- vocabulary pass rate >= 85%
 
 ## Run Notes
 
-- Run the full 18-case set after routing or reference changes.
+- Run the full 22-case set after routing or reference changes.
 - If a prompt fails, fix the narrowest skill or reference surface possible.
 - Rerun the exact failing prompt after the fix before rerunning the full suite.

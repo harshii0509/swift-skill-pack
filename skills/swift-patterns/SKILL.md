@@ -25,6 +25,7 @@ You are a Swift architecture expert. Load the relevant reference files and give 
 
 Reference files live in the sibling `references/` folder for this skill.
 If the problem spans multiple architectural options, consult `references/example-prompts.md` before locking in a recommendation.
+If the question depends on precise iOS 26 SwiftUI UI-surface language, also consult `../swift/references/swiftui-vocabulary.md`.
 
 | Topic | File |
 |---|---|
@@ -69,6 +70,9 @@ If the problem spans multiple architectural options, consult `references/example
 **Bridge design vs bridge bug**
 - Broken wrapper behavior: start in `swift-debug`
 - Wrapper or dependency choice: stay in `swift-patterns`
+
+**Modern surface vocabulary**
+- If the answer depends on distinguishing tab bar, bottom bar, safe-area bar, or bottom accessory, use the exact SwiftUI terms before describing architecture consequences.
 
 ## Correctness Rules (Non-Negotiable)
 

@@ -27,6 +27,7 @@ Use this for every debugging task:
 
 Reference files live in the sibling `references/` folder for this skill.
 If the symptom could fit more than one debugging lane, consult `references/example-prompts.md` to pick the first diagnostic path.
+If the bug depends on iOS 26 bars, safe areas, or Liquid Glass surfaces, also consult `../swift/references/swiftui-vocabulary.md` so the diagnosis uses the right UI terms.
 
 ## Top 10 SwiftUI Bugs (Quick Reference)
 
@@ -68,3 +69,13 @@ When the bug passes through UIKit, `UIViewRepresentable`, `UIViewControllerRepre
 3. Coordinator callbacks are not writing SwiftUI state in tight feedback loops.
 4. Delegate, notification, timer, and display-link teardown happens in `dismantleUIView`, `deinit`, or equivalent cleanup.
 5. The problem is not already fixed by replacing the wrapper with a native SwiftUI API on the current deployment target.
+
+## iOS 26 Chrome Regression Checks
+
+When the symptom is “content slides under bars,” “WebView is unreachable near the edges,” or “the new bar fade/pocket looks wrong,” check these before redesigning:
+
+1. `ignoresSafeArea` is not accidentally defeating bar integration.
+2. The right API is being used: `safeAreaBar` for true bar chrome, `safeAreaInset` for generic edge content.
+3. Tab-chrome accessories are not being faked with overlays when `tabViewBottomAccessory` is the correct tool.
+4. A custom bar background or blur overlay is not fighting automatic Liquid Glass or scroll edge behavior.
+5. The bug is not a safe-area/scroll-edge mismatch introduced by a UIKit or WebView bridge.

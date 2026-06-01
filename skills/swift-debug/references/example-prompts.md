@@ -70,6 +70,23 @@ Use these prompts to calibrate the first debugging lane and avoid jumping to arc
 
 ---
 
+## iOS 26 Bar / Safe-Area Regression
+
+**Prompt**
+`After moving to iOS 26, my ScrollView and WebView content end up under the top and bottom bars in a broken way.`
+
+**Load first**
+- `swiftui-body-bugs.md`
+- `../../swift/references/swiftui-vocabulary.md`
+
+**First checks**
+- accidental `ignoresSafeArea`
+- wrong choice between `safeAreaInset` and `safeAreaBar`
+- custom bar backgrounds fighting scroll edge behavior
+- bridge-owned content not respecting container safe areas
+
+---
+
 ## Sensor / Delegate State Bug
 
 **Prompt**

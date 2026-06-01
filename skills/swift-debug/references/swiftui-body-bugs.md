@@ -223,7 +223,31 @@ Color.clear
 
 ---
 
-## 9. @Observable Class Missing @MainActor
+## 9. iOS 26 Bar / Safe-Area Mismatch
+
+**Symptom:** Scroll content, web content, or custom controls slide under the top or bottom bars in a way that feels broken after moving to the latest SDK.
+
+**Diagnosis:** Look for `ignoresSafeArea`, custom bar overlays, `safeAreaInset` being used as fake chrome, or UIKit/web content that does not understand the hosting container’s safe area.
+
+**Root cause:** The view hierarchy is fighting the newer bar and scroll-edge system instead of participating in it.
+
+Common causes:
+
+- a custom overlay where `safeAreaBar` or `tabViewBottomAccessory` should be used
+- a tab-related accessory that is not attached to `TabView`
+- custom opaque or blur backgrounds on bars
+- WebView or UIKit bridge content that ignores container safe areas
+
+**Fix:** Start with the smallest semantic correction:
+
+- replace overlay chrome with `safeAreaBar` when the element is truly bar-like
+- use `tabViewBottomAccessory` when the surface belongs to tab chrome
+- remove accidental `ignoresSafeArea`
+- let standard bars adopt the system appearance before adding custom styling
+
+---
+
+## 10. @Observable Class Missing @MainActor
 
 **Symptom:** Purple runtime warning: "Publishing changes from background threads is not allowed."
 
@@ -256,7 +280,7 @@ class FeedViewModel {
 
 ---
 
-## 10. equatable() Modifier Silently Breaking Updates
+## 11. equatable() Modifier Silently Breaking Updates
 
 **Symptom:** View doesn't update even when data changes.
 

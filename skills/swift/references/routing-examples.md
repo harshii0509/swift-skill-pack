@@ -63,6 +63,24 @@ The user needs design-native critique and UI feel calibration before any large s
 
 ---
 
+## Liquid Glass / iOS 26 Prompt
+
+**User prompt**
+`We rebuilt with iOS 26 and our custom bars and blur surfaces now feel wrong. What should we review before rewriting the UI?`
+
+**Primary lane**
+`swift-prototype`
+
+**Why**
+The first need is current Apple UI-surface guidance: standard Liquid Glass adoption, bar chrome, and safe-area behavior.
+
+**Read first**
+- `../../swift-prototype/SKILL.md`
+- `../../swift-prototype/references/liquid-glass.md`
+- `../../swift/references/swiftui-vocabulary.md`
+
+---
+
 ## Clear Architecture Prompts
 
 **User prompt**
@@ -197,6 +215,24 @@ Even though this involves architecture and wrappers, the immediate need is diagn
 - `../../swift-debug/SKILL.md`
 - `../../swift-debug/references/xcode-debug-tools.md`
 - `../../swift-patterns/references/uikit-swiftui-bridge.md` as supporting context
+
+---
+
+## Mixed Prompt: iOS 26 Bar / Safe-Area Bug
+
+**User prompt**
+`After moving to iOS 26, my scroll content and WebView slide under the top and bottom bars in a broken way.`
+
+**Primary lane**
+`swift-debug`
+
+**Why**
+This is already a broken behavior. Diagnose safe-area, scroll-edge, and bar integration before redesigning the UI.
+
+**Read first**
+- `../../swift-debug/SKILL.md`
+- `../../swift-debug/references/swiftui-body-bugs.md`
+- `../../swift/references/swiftui-vocabulary.md`
 
 ---
 

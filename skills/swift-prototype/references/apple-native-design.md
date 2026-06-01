@@ -19,12 +19,14 @@ For SwiftUI work, that usually means:
 - clear content emphasis before decorative chrome
 - using system materials, spacing, and controls where they already solve the problem
 - respecting platform conventions instead of inventing a design language that fights the device
+- letting current platform chrome adopt the latest system appearance before customizing it
 
 Primary sources:
 
 - HIG: https://developer.apple.com/design/human-interface-guidelines/
 - SwiftUI overview: https://developer.apple.com/documentation/swiftui
 - Interface fundamentals: https://developer.apple.com/documentation/technologyoverviews/interface-fundamentals
+- Liquid Glass overview: https://developer.apple.com/documentation/technologyoverviews/adopting-liquid-glass
 
 ---
 
@@ -64,6 +66,7 @@ Default bias:
 - Are standard controls used where possible?
 - Do toolbars, search fields, sheets, lists, and split views behave like their platform peers?
 - Does the same interaction pattern mean the same thing across the app?
+- If the app targets the latest SDKs, are standard bars and controls being allowed to pick up the current system look before custom styling is added?
 
 ---
 
@@ -80,6 +83,7 @@ Default bias:
 - Treating HIG as a rulebook that forbids all visual personality.
 - Replacing standard navigation and input patterns without a strong reason.
 - Using materials, blur, and motion as decoration with no hierarchy payoff.
+- Fighting current system chrome with custom opaque bar backgrounds or hand-rolled blur overlays.
 - Asking HIG questions when the real problem is state ownership or a broken implementation.
 
 ---
@@ -88,6 +92,7 @@ Default bias:
 
 - Prefer system controls and built-in behaviors before custom replicas.
 - Use `Material` and system backgrounds before inventing custom glass stacks.
+- If the UI specifically targets iOS 26+, prefer native Liquid Glass and standard bars before layering custom blur.
 - Let platform navigation patterns stay recognizable: split views, stacks, sheets, toolbars, search.
 - Keep motion purposeful and restrained in product surfaces; save the loudest effects for prototypes or hero moments.
 - Treat accessibility, Dynamic Type, and layout adaptability as part of “native feel,” not as separate cleanup work.
@@ -107,5 +112,7 @@ Default bias:
 ## Escalation Rule
 
 If the request becomes more about gesture craft, animation personality, or experimental visual effects, pivot to `animation-craft.md` or `inferno-patterns.md`.
+
+If the request becomes specifically about Liquid Glass, custom bar APIs, or iOS 26 safe-area surfaces, load `liquid-glass.md`.
 
 If the request becomes about app-wide structure or multiplatform composition, load `../../swift-patterns/references/food-truck-patterns.md`.

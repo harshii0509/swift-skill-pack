@@ -127,6 +127,21 @@ Use these prompts to calibrate when `swift-patterns` should lead and what a stro
 
 ---
 
+## Modern SwiftUI Surface Terminology
+
+**Prompt**
+`Before we refactor this tabbed app, I need us to use the right terms for the mini-player, tab chrome, and bottom toolbar.`
+
+**Load first**
+- `../../swift/references/swiftui-vocabulary.md`
+
+**Optimize for**
+- naming `tabViewBottomAccessory`, `tab bar`, and `bottomBar` correctly
+- keeping terminology aligned before making structure changes
+- avoiding architecture advice that is based on the wrong surface model
+
+---
+
 ## Good Response Shape
 
 - Recommend one default pattern first.

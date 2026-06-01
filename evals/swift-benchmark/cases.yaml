@@ -1,5 +1,5 @@
 version: 1
-harness_instruction: "Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff."
+harness_instruction: "Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff. Use exact SwiftUI API names when they matter."
 
 cases:
   - id: mixed_prototype_to_production
@@ -59,6 +59,21 @@ cases:
       - "route to swift-patterns first"
     notes: "Ambiguous wording, but broken behavior takes precedence."
 
+  - id: mixed_ios26_glass_adoption_review
+    category: mixed
+    prompt: "We rebuilt with the iOS 26 SDK and now our custom nav bars, tab bars, and blur chips feel off. What should we review before rewriting the whole UI?"
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/liquid-glass.md"
+      - "swift/references/swiftui-vocabulary.md"
+    must_mention:
+      - "standard components pick up Liquid Glass automatically"
+      - "remove or reduce custom bar backgrounds"
+    must_avoid:
+      - "start with a UIKit rewrite"
+      - "recreate the bars with custom blur first"
+    notes: "Current-platform adoption review, not a full architecture rewrite."
+
   - id: prototype_drag_tilt_card
     category: prototype
     prompt: "Build a draggable glassy card that tilts with my finger and snaps back with a spring."
@@ -117,6 +132,35 @@ cases:
       - "turn it into a package architecture problem"
       - "jump to custom Metal without reason"
     notes: "Continuous effect prompt."
+
+  - id: prototype_liquid_glass_custom_controls
+    category: prototype
+    prompt: "I have a floating cluster of custom action chips. How should I adopt Liquid Glass correctly in SwiftUI, and when do I need GlassEffectContainer or glassEffectID?"
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/liquid-glass.md"
+    must_mention:
+      - "glassEffect"
+      - "GlassEffectContainer"
+    must_avoid:
+      - "build a custom blur stack first"
+      - "treat glassEffectID as mandatory without a morphing transition"
+    notes: "Pinned regression case."
+
+  - id: prototype_tab_bar_accessory_strategy
+    category: prototype
+    prompt: "I need a mini-player above the tab bar that can become inline when the bar collapses. Should this be tabViewBottomAccessory, safeAreaBar, or just an overlay?"
+    expected_primary_lane: "swift-prototype"
+    expected_first_references:
+      - "swift-prototype/references/liquid-glass.md"
+      - "swift/references/swiftui-vocabulary.md"
+    must_mention:
+      - "tabViewBottomAccessory"
+      - "safeAreaBar"
+    must_avoid:
+      - "default to overlay hacks"
+      - "confuse bottom bar with tab bar"
+    notes: "Pinned regression case."
 
   - id: patterns_session_ownership
     category: patterns
@@ -260,3 +304,18 @@ cases:
       - "route to patterns first"
       - "generic sensor architecture advice without diagnosis"
     notes: "Delegate-to-SwiftUI handoff bug."
+
+  - id: debug_ios26_content_under_bars
+    category: debug
+    prompt: "After moving to iOS 26, my ScrollView and WebView content slide under the top and bottom bars in a broken way. Where do I debug first?"
+    expected_primary_lane: "swift-debug"
+    expected_first_references:
+      - "swift-debug/references/swiftui-body-bugs.md"
+      - "swift/references/swiftui-vocabulary.md"
+    must_mention:
+      - "safeAreaBar or safeAreaInset distinction"
+      - "ignoresSafeArea or custom bar background checks"
+    must_avoid:
+      - "start with architecture redesign"
+      - "jump straight to a custom overlay fix"
+    notes: "Pinned regression case."

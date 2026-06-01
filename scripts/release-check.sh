@@ -18,10 +18,14 @@ done
 
 echo "Checking benchmark case count"
 case_count="$(rg -c '^  - id:' "$ROOT/evals/swift-benchmark/cases.yaml")"
-if [[ "$case_count" != "18" ]]; then
-  echo "Expected 18 benchmark cases, found $case_count" >&2
+if [[ "$case_count" != "22" ]]; then
+  echo "Expected 22 benchmark cases, found $case_count" >&2
   exit 1
 fi
+
+echo "Checking modern SwiftUI reference files"
+test -f "$ROOT/skills/swift/references/swiftui-vocabulary.md"
+test -f "$ROOT/skills/swift-prototype/references/liquid-glass.md"
 
 echo "Checking canonical skill layout"
 for skill in swift swift-prototype swift-patterns swift-debug; do

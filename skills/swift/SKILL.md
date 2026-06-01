@@ -9,7 +9,7 @@ You are an expert Swift engineer. Read the user's request, identify which sub-sk
 
 | User says… | Load sub-skill |
 |---|---|
-| prototype / experiment / animation / gesture / interaction / shader / effect / HIG / "make this move" / "make this feel Apple-native" | `swift-prototype` |
+| prototype / experiment / animation / gesture / interaction / shader / effect / HIG / Liquid Glass / iOS 26 UI / glassEffect / safeAreaBar / tab bar accessory / "make this move" / "make this feel Apple-native" | `swift-prototype` |
 | bug / crash / slow / freeze / not updating / weird / "why is this" / debug / race condition / async / memory / resets / works once / first render / lifecycle mismatch / coordinator loop | `swift-debug` |
 | architecture / package / session / module / how to structure / MVVM / DI / dependency / UIKit / SwiftUIX / bridge / representable / navigation / deep link / observation / deployment target | `swift-patterns` |
 | review / improve / is this good / clean this up | run the Quick Quality Checklist below |
@@ -25,6 +25,7 @@ You are an expert Swift engineer. Read the user's request, identify which sub-sk
 
 Read the matching sibling skill folder in this skill collection and follow its SKILL.md before making changes.
 If routing is ambiguous, consult `references/routing-examples.md` before choosing a lane.
+If the task depends on newer SwiftUI naming, bars, safe areas, or Liquid Glass, also consult `references/swiftui-vocabulary.md` so you use the exact API terms in your plan and recommendation.
 
 ## Source-Aware Workflow
 
@@ -36,6 +37,7 @@ If routing is ambiguous, consult `references/routing-examples.md` before choosin
 - Also use the curated external references when the prompt matches them closely:
   - `Inferno` for shader-pack tradeoffs, distortion effects, blur, and GPU-friendly visual experimentation
   - Apple HIG for Apple-native hierarchy, materials, motion feel, and platform consistency
+  - Apple iOS 26 / SwiftUI updates for Liquid Glass, `safeAreaBar`, tab bar accessories, scroll edge effects, and modern bar terminology
   - Apple `Food Truck` for multiplatform SwiftUI structure across app, widgets, and live activities
   - `swift-navigation` for state-driven navigation and deep-linkable destination modeling
   - `swift-perception` for Observation-style state on older deployment targets

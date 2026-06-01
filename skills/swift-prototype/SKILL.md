@@ -22,28 +22,32 @@ A good SwiftUI prototype has these qualities:
 | drag, swipe, pull, pan, gesture, trackpad, tilt, gyroscope | `references/gesture-patterns.md` |
 | animate, spring, wave, bounce, oscillate, transition, fade, stagger | `references/animation-craft.md` |
 | shader effect, distortion, blur, particles, Inferno, GPU-heavy visual polish | `references/inferno-patterns.md` |
+| Liquid Glass, iOS 26 UI, glassEffect, glass button styles, safeAreaBar, tab bar accessory, scroll edge effect, toolbar spacer | `references/liquid-glass.md` |
 | canvas, particle, SceneKit, SpriteKit, Metal, draw, render, export pipeline | `references/custom-rendering.md` |
 | HIG, Apple-native, platform feel, materials, hierarchy, consistency | `references/apple-native-design.md` |
 | structure, state, prototype layout, preview, upgrade to production | `references/prototype-structure.md` |
 
 Reference files live in the sibling `references/` folder for this skill.
 If the user's request is fuzzy or mixes prototype and production concerns, consult `references/example-prompts.md`.
+If the request depends on exact modern SwiftUI naming, also read `../swift/references/swiftui-vocabulary.md`.
 
 ## Workflows
 
 ### Build a new prototype
 1. Read the relevant reference file(s)
 2. If the effect is shader-heavy or visual-effects-first, compare `references/inferno-patterns.md` against `references/custom-rendering.md` before choosing the rendering tier.
-3. Propose a minimal state model: what `@State` vars does the idea need?
-4. Write the skeleton: state at top → body in the middle → #Preview at the bottom
-5. Layer in the interaction, then the animation, then the polish
-6. Add haptic feedback at every meaningful state change
+3. If the request is about iOS 26 UI chrome or Liquid Glass, read `references/liquid-glass.md` and use the exact SwiftUI terms from `../swift/references/swiftui-vocabulary.md`.
+4. Propose a minimal state model: what `@State` vars does the idea need?
+5. Write the skeleton: state at top → body in the middle → #Preview at the bottom
+6. Layer in the interaction, then the animation, then the polish
+7. Add haptic feedback at every meaningful state change
 
 ### Review an existing prototype
 1. Check it against the "Good Prototype Checklist" below
 2. Read the relevant reference file for patterns that apply
 3. If the user wants it to feel more Apple-native, load `references/apple-native-design.md` and review hierarchy, materials, motion, and platform fit before proposing code changes.
-4. Report only the things that would make it feel notably better — not style nitpicks
+4. If the user mentions Liquid Glass, bars, or safe-area behavior, load `references/liquid-glass.md` and prefer native bar/surface APIs over custom overlays.
+5. Report only the things that would make it feel notably better — not style nitpicks
 
 ### Upgrade a prototype to production
 1. Read `references/prototype-structure.md` (the upgrade section)
@@ -55,6 +59,11 @@ If the user's request is fuzzy or mixes prototype and production concerns, consu
 1. Stay native if SwiftUI already covers the behavior with a small amount of code.
 2. Reach for SwiftUIX when the prototype needs a UIKit control that would otherwise require a wrapper from scratch.
 3. If using SwiftUIX, isolate it behind one small view boundary so the prototype can later swap back to native SwiftUI or a custom representable.
+
+### Talk in current SwiftUI vocabulary
+1. Prefer the exact API names when the distinction matters: `tabViewBottomAccessory`, `safeAreaBar`, `tabBarMinimizeBehavior`, `scrollEdgeEffectStyle`.
+2. Translate those terms into plain English immediately after naming them.
+3. Distinguish `bottomBar` from `tab bar`; do not treat them as synonyms.
 
 ## Good Prototype Checklist
 

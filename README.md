@@ -1,38 +1,17 @@
 # Swift Skill Pack
 
-[![skills.sh](https://skills.sh/b/harshii0509/swift-skill-pack)](https://skills.sh/harshii0509/swift-skill-pack)
-
 A reusable 4-skill suite for Swift, SwiftUI, and iOS work across prototyping, production architecture, and debugging.
 
-Use it with Codex, Claude, and similar coding agents when you want sharper routing and more grounded Swift guidance than a generic assistant usually gives you.
+Public repo: [harshii0509/swift-skill-pack](https://github.com/harshii0509/swift-skill-pack)
 
 ## Included Skills
 
-| Skill | What it does |
-|---|---|
-| `swift` | Router skill that picks the right lane before implementation starts |
-| `swift-prototype` | SwiftUI interaction design, motion, rendering, and Apple-native feel |
-| `swift-patterns` | App structure, sessions, navigation, bridges, and modularization |
-| `swift-debug` | Root-cause debugging for SwiftUI, UIKit bridges, concurrency, and performance |
+- `swift`: router skill that picks the right lane
+- `swift-prototype`: interaction design, motion, rendering, Apple-native feel
+- `swift-patterns`: app structure, sessions, navigation, bridges, modularization
+- `swift-debug`: root-cause debugging for SwiftUI, UIKit bridges, concurrency, and performance
 
 The canonical installable source lives in [`skills/`](./skills).
-
-## Best For
-
-- SwiftUI interaction prototypes that need stronger feel and cleaner state models
-- Production Swift app structure decisions around sessions, navigation, bridges, and modularization
-- Difficult SwiftUI bugs involving stale state, `UIViewRepresentable`, concurrency, or rendering regressions
-- Agent workflows where routing to the right Swift sub-skill matters as much as the final code
-
-## Quick Start
-
-Install the full pack with the `skills` CLI:
-
-```bash
-npx skills add harshii0509/swift-skill-pack
-```
-
-This is the fastest cross-agent install path and works with the broader `skills.sh` ecosystem.
 
 ## Install In Codex
 
@@ -47,8 +26,6 @@ https://github.com/harshii0509/swift-skill-pack/tree/main/skills/swift-debug
 ```
 
 After install, restart Codex so the new skills are picked up.
-
-You can also browse this pack on [skills.sh](https://skills.sh/harshii0509/swift-skill-pack) once the repo has been indexed there.
 
 ## Install In Claude
 
@@ -74,15 +51,16 @@ cp -R skills/swift-debug ~/.claude/skills/
 
 The benchmark suite lives in [`evals/swift-benchmark/`](./evals/swift-benchmark):
 
-- `cases.yaml`: 18 benchmark prompts
+- `cases.yaml`: 22 benchmark prompts
 - `rubric.md`: scoring rules
 - `results-template.md`: empty run template
 - `results-2026-05-30.md`: first packaged baseline
+- `results-2026-06-01.md`: iOS 26 / Liquid Glass / vocabulary expansion pass
 
 The harness is answer-only by default:
 
 ```text
-Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff.
+Answer only. Do not edit files. First name the primary lane. Then name the first references you would load. Then give a short recommendation with the main tradeoff. Use exact SwiftUI API names when they matter.
 ```
 
 ## Attribution
